@@ -37,3 +37,4 @@
 # output
 build/
 *.user
+*.db

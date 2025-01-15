@@ -35,26 +35,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)int\</IntDir>
-    <ImageXexOutput>$(SolutionDir)build\$(Configuration)\$(ProjectName).xex</ImageXexOutput>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)build\$(Configuration)\bin\</OutDir>
+    <IntDir>$(SolutionDir)build\$(Configuration)\int\</IntDir>
+    <ImageXexOutput>$(SolutionDir)build\$(Configuration)\bin\$(ProjectName).xex</ImageXexOutput>
+    <LibraryPath>$(Xbox360TechPreviewLibrary);$(XDKInstallDir)\lib\xbox</LibraryPath>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputFile>$(SolutionDir)build\$(Configuration)\$(TargetName)$(TargetExt)</OutputFile>
+    <OutputFile>$(SolutionDir)build\$(Configuration)\bin\$(TargetName)$(TargetExt)</OutputFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)int\</IntDir>
-    <ImageXexOutput>$(SolutionDir)build\$(Configuration)\$(ProjectName).xex</ImageXexOutput>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)build\$(Configuration)\bin\</OutDir>
+    <IntDir>$(SolutionDir)build\$(Configuration)\int\</IntDir>
+    <ImageXexOutput>$(SolutionDir)build\$(Configuration)\bin\$(ProjectName).xex</ImageXexOutput>
+    <LibraryPath>$(Xbox360TechPreviewLibrary);$(XDKInstallDir)\lib\xbox</LibraryPath>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutputFile>$(SolutionDir)build\$(Configuration)\$(TargetName)$(TargetExt)</OutputFile>
+    <OutputFile>$(SolutionDir)build\$(Configuration)\bin\$(TargetName)$(TargetExt)</OutputFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <ExceptionHandling>false</ExceptionHandling>
@@ -69,26 +69,33 @@
       <PrecompiledHeaderOutputFile>
       </PrecompiledHeaderOutputFile>
       <DeduceVariableType>true</DeduceVariableType>
-      <ShowIncludes>true</ShowIncludes>
+      <ShowIncludes>false</ShowIncludes>
+      <AssemblerListingLocation>$(IntDir)$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(SolutionDir)build\$(Configuration)\$(ProjectName).pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>xapilibd.lib;xboxkrnl.lib;vcomp.lib;$(SolutionDir)build\$(Configuration)\Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>xapilibd.lib;d3d9d.lib;d3dx9d.lib;xgraphicsd.lib;xboxkrnl.lib;xaudiod2.lib;xmcored.lib;xuirund.lib;xuirenderd.lib</AdditionalDependencies>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <Optimization>Full</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <StringPooling>true</StringPooling>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -100,6 +107,13 @@
       </PrecompiledHeaderOutputFile>
       <DeduceVariableType>true</DeduceVariableType>
       <CallAttributedProfiling>Disabled</CallAttributedProfiling>
+      <AssemblerListingLocation>$(IntDir)$(ProjectName)\</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AnalyzeStalls>true</AnalyzeStalls>
+      <PreschedulingOptimization>true</PreschedulingOptimization>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -107,14 +121,41 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ProgramDatabaseFile>$(SolutionDir)build\$(Configuration)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SetChecksum>true</SetChecksum>
-      <AdditionalDependencies>xapilibd.lib;xboxkrnl.lib;vcomp.lib;$(SolutionDir)build\$(Configuration)\Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>xapilib.lib;d3d9ltcg.lib;d3dx9.lib;xgraphics.lib;xboxkrnl.lib;xaudio2.lib;xmcoreltcg.lib;xuirunltcg.lib;xuirenderltcg.lib</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="Common\FileSystem.cpp" />
+    <ClCompile Include="Common\FileUtil.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Common\Log.cpp" />
+    <ClCompile Include="Core\Graphics.cpp" />
+    <ClCompile Include="Core\Settings.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\CommonXbox.h" />
+    <ClInclude Include="Common\Debug.h" />
+    <ClInclude Include="Common\FileSystem.hpp" />
+    <ClInclude Include="Common\FileUtil.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Xbox 360'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Common\KernelExtensions.h" />
+    <ClInclude Include="Common\Log.hpp" />
+    <ClInclude Include="Common\Types.h" />
+    <ClInclude Include="Core\Graphics.hpp" />
+    <ClInclude Include="Core\Settings.hpp" />
+    <ClInclude Include="UI\MainScene.hpp" />
+    <ClInclude Include="UI\UI.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

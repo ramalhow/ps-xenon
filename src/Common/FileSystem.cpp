@@ -1,9 +1,11 @@
 #include "FileSystem.hpp"
+#include "Log.hpp"
 
 #include <Common/Types.h>
 #include <Common/CommonXbox.h>
 #include <Common/KernelExtensions.h>
-#include <string.h>
+
+#define SYMBOL_LENGTH 4 // the symbol length is always 4
 
 static HANDLE MountStaticMappedDrive(const char *DrivePath) {
 	return CreateFile(
@@ -24,8 +26,8 @@ namespace FileSystem
         // very ugly... but this is what the xboxkrnl.lib exports to us
         // according to the original source
         STRING Drive = {
-            (uint16) strnlen_s(DriveName, 4), // the symbol length is always 4
-            5,
+            (uint16) strnlen_s(DriveName, SYMBOL_LENGTH),
+            SYMBOL_LENGTH + 1,
             DriveName
         };
 
@@ -41,16 +43,16 @@ namespace FileSystem
     bool UnmountPath(char *DriveName)
     {
         STRING Drive = {
-            (uint16) strnlen_s(DriveName, 4),
-            5,
+            (uint16) strnlen_s(DriveName, SYMBOL_LENGTH),
+            SYMBOL_LENGTH + 1,
             DriveName
         };
         return ObDeleteSymbolicLink(&Drive) == S_OK;
     }
-
+    
     bool Init()
     {
-        OutputDebugString("Init Filesystem");
+        Log::GenericLog("Init Filesystem");
 		MountPath("hdd0:", "\\Device\\Harddisk0\\Partition0");
         MountPath("hdd1:", "\\Device\\Harddisk0\\Partition1");
         MountPath("hdd2:", "\\Device\\Harddisk0\\Partition2");
@@ -68,6 +70,7 @@ namespace FileSystem
     {
         //UnmountPath("dvd:");
 
+        Log::GenericLog("Shutdown Filesystem");
         UnmountPath("usb2:");
         UnmountPath("usb1:");
         UnmountPath("usb0:");
@@ -76,12 +79,6 @@ namespace FileSystem
         UnmountPath("hdd2:");
         UnmountPath("hdd1:");
         UnmountPath("hdd0:");        
-    }
-
-    bool SetupDefaultDirectories()
-    {
-
-        return true;
     }
     
 }

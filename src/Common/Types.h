@@ -18,3 +18,6 @@ typedef wchar_t wchar;
 #define RESTRICT __restrict
 #define PASS_IN_REGS __declspec(passinreg)
 #define FORCE_INLINE __forceinline
+#define FORCE_ALIGN(x) __declspec(align(x)) 
+#define CACHE_LINE 128
+#define CACHE_ALIGN FORCE_ALIGN(CACHE_LINE)

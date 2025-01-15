@@ -17,7 +17,6 @@
 #pragma warning(disable : 4214) // bit field types other than int
 #pragma warning(disable : 4514) // unreferenced inline function has been removed
 
-// experimental
 #define NOMINMAX
 
 // System Headers
@@ -28,17 +27,17 @@
 #include <xbox.h>
 #include <xam.h>
 
-#ifdef ENABLE_PIX
+#if ENABLE_PIX
 #include <pix.h>
 #endif // ENABLE_PIX
 
-#ifdef INCLUDE_D3D
+#if INCLUDE_D3D
 #define D3DCOMPILE_USEVOIDS // Change the return type of DiretcX functions to void
 #include <d3d9.h>
 #include <d3dx9.h>
 #endif // INCLUDE_D3D
 
-#ifdef INCLUDE_NET
+#if  INCLUDE_NET
 #include <winsockx.h>
 #include <xonline.h>
 #endif // INCLUDE_NET

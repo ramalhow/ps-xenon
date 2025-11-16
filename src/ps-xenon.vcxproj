@@ -70,7 +70,8 @@
       </PrecompiledHeaderOutputFile>
       <DeduceVariableType>true</DeduceVariableType>
       <ShowIncludes>false</ShowIncludes>
-      <AssemblerListingLocation>$(IntDir)$(ProjectName)\</AssemblerListingLocation>
+      <AssemblerListingLocation>
+      </AssemblerListingLocation>
       <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatWarningAsError>false</TreatWarningAsError>
@@ -107,7 +108,8 @@
       </PrecompiledHeaderOutputFile>
       <DeduceVariableType>true</DeduceVariableType>
       <CallAttributedProfiling>Disabled</CallAttributedProfiling>
-      <AssemblerListingLocation>$(IntDir)$(ProjectName)\</AssemblerListingLocation>
+      <AssemblerListingLocation>
+      </AssemblerListingLocation>
       <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>

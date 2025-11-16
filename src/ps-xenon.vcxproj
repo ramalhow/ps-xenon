@@ -72,7 +72,7 @@
       <ShowIncludes>false</ShowIncludes>
       <AssemblerListingLocation>
       </AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatWarningAsError>false</TreatWarningAsError>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
@@ -110,7 +110,7 @@
       <CallAttributedProfiling>Disabled</CallAttributedProfiling>
       <AssemblerListingLocation>
       </AssemblerListingLocation>
-      <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>

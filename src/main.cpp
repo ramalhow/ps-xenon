@@ -1,10 +1,9 @@
-#include "Common/CommonXbox.h"
-
 #include "Common/FileSystem.hpp"
 #include "Common/Log.hpp"
 #include "Core/Graphics.hpp"
 #include "Core/Settings.hpp"
 #include "UI/UI.hpp"
+#include <string>
 
 void __cdecl main() {
 
@@ -19,8 +18,6 @@ void __cdecl main() {
       CheckConfigFolders();
       CheckResources();
   }
-  */
-
   Settings gSettings = LoadDefaultSettings();
 
   auto graphicsContext = Graphics::Init(gSettings);
@@ -55,9 +52,12 @@ void __cdecl main() {
 
   Graphics::Shutdown(graphicsContext);
 
+
+  */
+
   // TODO: implement SaveSettings()
 
   // Goodbye!
   FileSystem::Shutdown();
-  XLaunchNewImage(XLAUNCH_KEYWORD_DASH, 0);
+  XLaunchNewImage(nullptr, 0);
 }

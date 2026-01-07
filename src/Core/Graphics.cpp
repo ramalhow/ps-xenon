@@ -1,6 +1,6 @@
 #include "Graphics.hpp"
 #include "Common\Log.hpp"
-#include "Shaders.hpp"
+//#include "Shaders.hpp"
 #include <assert.h>
 
 GraphicsContext::GraphicsContext() : d3d(nullptr), device(nullptr) {
@@ -64,6 +64,8 @@ void LoadShaders(GraphicsContext &gc) {}
 // to send constant data directly to the xbox 360 gpu
 void Draw(GraphicsContext &gc) {
 
+	/*
+
   if (in_modelViewProj != NULL)
     pVsShaderTable->SetMatrix(gc.device, in_modelViewProj,
                               (D3DXMATRIX *)&WorldView);
@@ -124,6 +126,7 @@ void Draw(GraphicsContext &gc) {
 
   // Draw Pcsx surface
   gc.device->DrawPrimitiveUP(D3DPT_RECTLIST, 1, Vertices, sizeof(COLORVERTEX));
+  */
 };
 
 void SwapBuffers(GraphicsContext &gc) {

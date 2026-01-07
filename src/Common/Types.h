@@ -14,7 +14,7 @@ typedef signed __int64 int64;
 
 typedef wchar_t wchar;
 
-// modfiers
+// custom modfiers
 #define RESTRICT __restrict
 #define PASS_IN_REGS __declspec(passinreg)
 #define FORCE_INLINE __forceinline
